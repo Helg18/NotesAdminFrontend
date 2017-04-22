@@ -6,8 +6,10 @@ import { HttpModule } from '@angular/http';
 import { CoreModule } from './core/core.module';
 import { ShellComponent } from './core/shell/shell.component';
 
+import 'hammerjs';
+
 @NgModule({
-  declarations: [
+  declarations: [  
   ],
   imports: [
     BrowserModule,
