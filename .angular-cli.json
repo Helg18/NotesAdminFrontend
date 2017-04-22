@@ -19,7 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "hl",
       "styles": [
-        "~@angular/material/core/theming/prebuilt/indigo-pink.css",
         "styles.css"
       ],
       "scripts": [
