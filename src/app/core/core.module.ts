@@ -11,30 +11,19 @@ import { MaterialModule, MdButtonModule, MdCheckboxModule, MdToolbarModule } fro
 
 const routes: Routes = [
   {
-    path:''
-  },
-  {
     path:'login',
-    loadChildren: ''
+    loadChildren: './../login/login.module#LoginModule'
   },
   {
     path:'register',
-    loadChildren: ''
-  },
-  {
-    path:'categorias',
-    loadChildren: ''
-  },
-  {
-    path:'notas',
-    loadChildren: ''
+    loadChildren: './../register/register.module#RegisterModule'
   }
 ]
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MaterialModule,
     MdButtonModule, 
