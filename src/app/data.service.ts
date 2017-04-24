@@ -111,4 +111,15 @@ export class DataService {
       .map(response => response.json());
   }//end noteLis
 
+  //Guardar Nota
+  noteGuardar(data){
+    let headers = new Headers();
+    let params = JSON.stringify({title: data.title, note: data.note, status: 0, category_id: data.categoria});
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization', 'Bearer ' + window.sessionStorage.getItem('miToken'))
+
+    return this.http.post(this.Note, params, {headers: headers})
+      .map(response => response.json());
+  }
+
 }

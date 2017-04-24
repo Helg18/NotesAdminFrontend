@@ -4,7 +4,7 @@ import { NoteComponent } from './note/note.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule, MdButtonModule, MdCheckboxModule, MdToolbarModule, MdInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { MdGridListModule } from '@angular/material';
+import { MdGridListModule, MdSelectModule } from '@angular/material';
 
 
 const routes: Routes = [
@@ -24,7 +24,8 @@ const routes: Routes = [
     MdCheckboxModule,
     MdToolbarModule,
     FormsModule,
-    MdGridListModule
+    MdGridListModule,
+    MdSelectModule
   ],
   declarations: [NoteComponent]
 })
