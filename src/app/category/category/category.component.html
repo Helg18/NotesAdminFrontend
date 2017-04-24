@@ -10,7 +10,7 @@
 					{{categoria.id}} - {{categoria.categoria}}
 				</md-grid-tile>
 				<md-grid-tile colspan="1" rowspan="1" class="fondo" >
-					<button md-button>Delete</button>
+					<button md-button (click)="eliminar(categoria.id)">Eliminar</button>
 				</md-grid-tile>
 
 			</div>

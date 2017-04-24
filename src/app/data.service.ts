@@ -63,5 +63,14 @@ export class DataService {
       .map(response => response.json());
   }//end categoryList
 
+  //Eliminar categorias
+  categoryDelete(data){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization',  'Bearer ' + window.sessionStorage.getItem('miToken'))
+
+    return this.http.delete(this.Category+'/'+data, {headers: headers} )
+      .map( response => response.json() );
+  }//End categoryDelete
 
 }

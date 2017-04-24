@@ -21,4 +21,10 @@ export class CategoryComponent implements OnInit {
       );
   }
 
+  eliminar(data){
+    this.dataservice.categoryDelete(data).subscribe(
+      (data) => alert(data.msg)
+      );
+  }
+
 }
