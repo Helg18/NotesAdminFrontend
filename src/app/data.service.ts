@@ -94,6 +94,21 @@ export class DataService {
 
     return this.http.put(this.Category+'/'+data.actualizandoCategoriaId, params, {headers: headers})
       .map(response=>response.json());
-  }
+  }// end categoryActualizar
+
+
+
+  /**
+   * Notas
+   */
+  //listar Notas
+  noteListar(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization',  'Bearer ' + window.sessionStorage.getItem('miToken'))
+    
+    return this.http.get(this.Note, {headers: headers})
+      .map(response => response.json());
+  }//end noteLis
 
 }

@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path:'category',
     loadChildren: './../category/category.module#CategoryModule'
+  },
+  {
+    path:'note',
+    loadChildren: './../note/note.module#NoteModule'
   }
 ]
 

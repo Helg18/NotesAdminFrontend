@@ -1,3 +1,16 @@
-<p>
-  note works!
-</p>
+<div>
+		<br><br><br>
+		<h4>Lista de notas</h4>
+		
+		
+		<div class="box-nota" *ngFor="let note of notas">
+		  <div class="title"> {{ note.title }} </div>
+		  <div class="subtitulo left">{{ note.category_id }}</div>
+		  <div class="subtitulo right">{{ note.user_id}}</div>
+		  <div class="note">{{ note.note }}</div>
+		  <div class="pie left"><button md-button>Actualizar</button><button md-button>Eliminar</button></div>
+		</div>
+		
+
+		<br><br><br>
+</div>
