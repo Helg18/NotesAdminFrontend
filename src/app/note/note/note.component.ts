@@ -50,4 +50,11 @@ export class NoteComponent implements OnInit {
   	this.listar();
   }
 
+    eliminar(data){
+    this.dataservice.noteDelete(data).subscribe(
+      (data) => alert(data.msg)
+      );
+    this.listar();
+  }
+
 }

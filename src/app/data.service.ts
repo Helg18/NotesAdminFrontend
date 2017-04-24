@@ -120,6 +120,16 @@ export class DataService {
 
     return this.http.post(this.Note, params, {headers: headers})
       .map(response => response.json());
-  }
+  }//end noteGuardar
+
+  //Eliminar notas
+  noteDelete(data){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization',  'Bearer ' + window.sessionStorage.getItem('miToken'))
+
+    return this.http.delete(this.Note+'/'+data, {headers: headers} )
+      .map( response => response.json() );
+  }//End noteDelete
 
 }
