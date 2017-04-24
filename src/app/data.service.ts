@@ -132,4 +132,21 @@ export class DataService {
       .map( response => response.json() );
   }//End noteDelete
 
+  noteActualizar(data){
+    let headers = new Headers();
+    let params = JSON.stringify({
+                      category_id: data.actualizandoCategoria, 
+                      id: data.actualizandoNotaId,
+                      title: data.actualizandoTitle,
+                      note: data.actualizandoNote,
+                      status: data.actualizandoStatus
+                    });
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization', 'Bearer ' + window.sessionStorage.getItem('miToken'))
+
+    return this.http.put(this.Note+'/'+data.actualizandoNotaId, params, {headers: headers})
+      .map(response=>response.json());
+  }// end categoryActualizar
+
+
 }

@@ -14,10 +14,21 @@ export class NoteComponent implements OnInit {
   public categoria;
   public title;
   public note;
+  public mostrar_crear;
+  public mostrar_actualizar;
+  public actualizandoNotaId;
+  public actualizandoNote;
+  public actualizandoCategoria;
+  public actualizandoTitle;
+  public actualizandoStatus;
+  public checkedono;
 
   constructor(private dataservice: DataService) {
     this.title="";
     this.note="";
+    this.mostrar_crear = false;
+    this.mostrar_actualizar = false;
+    this.checkedono =  [ {value: '0', viewValue: 'Pendiente'}, {value: '1', viewValue: 'Completo'} ];
   }
 
   ngOnInit() {
@@ -47,11 +58,32 @@ export class NoteComponent implements OnInit {
       (data) =>  alert(data.msg)
       );
     this.borrarCampos();
-  	this.listar();
+    this.listar();
   }
 
-    eliminar(data){
+  eliminar(data){
     this.dataservice.noteDelete(data).subscribe(
+      (data) => alert(data.msg)
+      );
+    this.listar();
+  }
+
+  mostrarformcrear(){
+    if (this.mostrar_crear) { this.mostrar_crear = false; } 
+    else { this.mostrar_crear = true; }
+  }
+
+  mostrarformactualizar(data){  
+    if (!this.mostrar_actualizar) { this.mostrar_actualizar = true; }
+    this.actualizandoNotaId    = data.id;
+    this.actualizandoCategoria = data.category_id;
+    this.actualizandoTitle     = data.title;
+    this.actualizandoNote      = data.note;
+    this.actualizandoStatus    = data.status;
+  }
+
+  actualizar(data){
+    this.dataservice.noteActualizar(data).subscribe(
       (data) => alert(data.msg)
       );
     this.listar();

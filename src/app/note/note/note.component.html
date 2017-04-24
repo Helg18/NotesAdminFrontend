@@ -1,8 +1,12 @@
 <div align="center">
 		<br><br><br>
 		<h4>Lista de notas</h4>
-
-		<div class="agregar">
+		<br><br>
+	    	  <button md-raised-button (click)="mostrarformcrear()">Crear nueva nota</button>
+		<br><br>
+		<!-- Crear -->
+		<div class="agregar" [hidden]="!mostrar_crear">
+			<h5>Crear nueva nota</h5>
 			<form class="example-form" (ngSubmit)="guardar(this)">
 			  <md-input-container class="example-full-width">
 			    <input type="text" mdInput placeholder="Titulo" required name="title" [(ngModel)]='title'>
@@ -20,20 +24,53 @@
 	    	  <button md-raised-button>Guardar</button>
 			</form>
 		</div>
+		<!-- Fin crear -->
+		<!-- actualizar -->
+		<div class="agregar" [hidden]="!mostrar_actualizar">
+			<h5>Actualizar nota</h5>
+			<form class="example-form" (ngSubmit)="actualizar(this)">
+			  <md-input-container class="example-full-width">
+			    <input type="text" disabled mdInput placeholder="id de la nota" required name="id" [(ngModel)]='actualizandoNotaId'>
+			  </md-input-container>
+			  <md-input-container class="example-full-width">
+			    <input type="text" mdInput placeholder="Titulo" required name="title" required [(ngModel)]='actualizandoTitle'>
+			  </md-input-container>
+
+			  <md-input-container class="example-full-width">
+			    <input type="text" mdInput placeholder="Descripcion" required name="note" required [(ngModel)]='actualizandoNote'>
+			  </md-input-container>
+
+			  <md-select placeholder="Categoria" [(ngModel)]="actualizandoCategoria" name="categoria" required class="example-full-width">
+			    <md-option *ngFor="let cat of categorias" [value]="cat.id">
+			      {{cat.categoria}}
+			    </md-option>
+			  </md-select>
+
+			  <md-select placeholder="Status" [(ngModel)]="actualizandoStatus" name="status" required class="example-full-width">
+			    <md-option *ngFor="let stat of checkedono" [value]="stat.value">
+			      {{stat.viewValue}}
+			    </md-option>
+			  </md-select>
+
+			  
+			  <br><br>
+	    	  <button md-raised-button>Guardar</button>
+			</form>
+		</div>
+		<!-- Fin actualizar -->
 		
 		<div class="contenedor">
-			<div class="box-nota" *ngFor="let note of notas">
+			<div class="box-nota" *ngFor="let note of notas | orderby">
 			  <div class="title"> {{ note.title }} </div>
 			  <div class="subtitulo left">Categoria: {{ note.category_name }}</div>
-			  <div class="subtitulo right"> Estatus: 
-			  	<div *ngIf="note.status; then thenBlock; else elseBlock"></div>
-			  	    <ng-template #primaryBlock>Completa</ng-template>
-			  	    <ng-template #elseBlock>Pendiente</ng-template>
-			  </div>
+			  <div class="subtitulo right">Estatus: 
+				  <div *ngIf="note.status; else elseBlock">Completa</div>
+					<ng-template #elseBlock> Pendiente </ng-template>
+				  </div>
 			  <div class="note">{{ note.note }}</div>
 			  <hr>
 			  <div class="pie">
-			  	<button class="left" md-button>Modificar</button>
+			  	<button class="left" md-button (click)="mostrarformactualizar(note)">Modificar</button>
 			  	<button class="right" md-button (click)="eliminar(note.id)">Eliminar</button>
 			  </div>
 			  <div class="fechas left">Creado: {{ note.created_at | date:"dd/MM/yyyy"}}</div>
