@@ -1,0 +1,21 @@
+<div align="center" >
+		<br><br><br>
+		<h4>Lista de categorias</h4>
+		
+		<md-grid-list cols="4" rowHeight="100px">
+
+			<div *ngFor="let categoria of category">
+				<md-grid-tile colspan="1" rowspan="2" >
+				</md-grid-tile>
+
+				<md-grid-tile colspan="2" rowspan="1" class="fondo" >
+					{{categoria.id}} - {{categoria.categoria}}
+					<button md-button>Delete</button>
+				</md-grid-tile>
+
+			</div>
+
+		</md-grid-list>
+
+		<br><br><br>
+</div>

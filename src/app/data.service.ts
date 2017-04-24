@@ -4,12 +4,15 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class DataService {
   public Login;
-	public Register;
+  public Register;
+	public Category;
   public miToken;
 
   constructor( private http: Http) {
     this.Login = 'http://localhost:8000/api/login';
-  	this.Register = 'http://localhost:8000/api/register';
+    this.Register = 'http://localhost:8000/api/register';
+  	this.Category = 'http://localhost:8000/api/category';
+    this.miToken = '';
   }
 
   loginme(data){
@@ -21,10 +24,10 @@ export class DataService {
     return this.http.post(this.Login, params, {headers: headers})
       .map(response => response.json()).subscribe(
       	(data)=> {
-                    this.miToken = data.token,
-                    alert("Inicio de secion exitosa")
+                    window.sessionStorage.setItem('miToken', data.token),
+                    alert("Inicio de secion exitosa") 
                   }
-      	);
+        );
   }
 
   //Registro
@@ -43,5 +46,22 @@ export class DataService {
                   }
         );
   }//End registerMe
+
+
+
+
+  /**
+   * Categorias
+   */
+  //Listar categorias
+  categoryList(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization',  'Bearer ' + window.sessionStorage.getItem('miToken'))
+    
+    return this.http.get(this.Category, {headers: headers})
+      .map(response => response.json());
+  }//end categoryList
+
 
 }
