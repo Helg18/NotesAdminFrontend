@@ -5,13 +5,15 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 export class DataService {
   public Login;
   public Register;
-	public Category;
+  public Category;
+	public Note;
   public miToken;
 
   constructor( private http: Http) {
     this.Login = 'http://localhost:8000/api/login';
     this.Register = 'http://localhost:8000/api/register';
-  	this.Category = 'http://localhost:8000/api/category';
+    this.Category = 'http://localhost:8000/api/category';
+  	this.Note = 'http://localhost:8000/api/note';
     this.miToken = '';
   }
 
