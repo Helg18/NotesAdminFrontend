@@ -19,7 +19,7 @@ export class NoteComponent implements OnInit {
 
   listar(){
   	this.dataservice.noteListar().subscribe(
-  		(data) => {this.notas = data, console.log(data) }
+  		(data) => this.notas = data
   		);
   }
 
