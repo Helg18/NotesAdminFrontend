@@ -74,7 +74,7 @@ export class DataService {
   }//End categoryDelete
 
   //guardar categoria
-  categoriaGuardar(data){
+  categoryGuardar(data){
     let headers = new Headers();
     let params = JSON.stringify({category: data.categoria});
     headers.append('Content-Type', 'application/json')
@@ -83,5 +83,15 @@ export class DataService {
     return this.http.post(this.Category, params, {headers: headers})
       .map(response => response.json());
   }//end categoriaGuardar
+
+  categoryActualizar(data){
+    let headers = new Headers();
+    let params = JSON.stringify({category: data.actualizandoCategoria, id: data.actualizandoCategoriaId});
+    headers.append('Content-Type', 'application/json')
+    headers.append('Authorization', 'Bearer ' + window.sessionStorage.getItem('miToken'))
+
+    return this.http.put(this.Category+'/'+data.actualizandoCategoriaId, params, {headers: headers})
+      .map(response=>response.json());
+  }
 
 }

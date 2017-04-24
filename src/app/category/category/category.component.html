@@ -2,13 +2,28 @@
 		<br><br><br>
 		<h4>Lista de categorias</h4>
 
-		<div align="center" >
+		<div align="center" [hidden]="visible" >
 			<h4>Guardar</h4>
-			<form class="example-form" (ngSubmit)="guardar(this)">
+			<form class="example-form" #crearForm="ngForm"  (ngSubmit)="guardar(this)">
 				<md-input-container class="example-full-width">
 					<input type="text" mdInput placeholder="nombre de la nueva categoria" required name="categoria" [(ngModel)]='categoria'>
 				</md-input-container>&nbsp;&nbsp;&nbsp;&nbsp;
 			<button md-raised-button>Guardar!</button>
+			</form>
+		<br><br>
+		</div>
+
+		<div align="center" [hidden]="!visible">
+			<h4>Actualizar</h4>
+			<form class="example-form" #actualizarForm="ngForm" >
+				<md-input-container class="example-full-width">
+					<input type="text" disabled mdInput placeholder="id de la categoria" required name="id" [(ngModel)]='actualizandoCategoriaId'>
+				</md-input-container>
+				<md-input-container class="example-full-width">
+					<input type="text" mdInput placeholder="nuevo nombre de la categoria" autocomplete="off" required name="categoria" [(ngModel)]='actualizandoCategoria'>
+				</md-input-container>&nbsp;&nbsp;
+			<button md-raised-button (click)="cancelarActualizar()">Cancelar</button>
+			<button md-raised-button (click)="actualizar(this)">Actualizar!</button>
 			</form>
 		</div><br><br>
 
@@ -21,6 +36,7 @@
 					{{categoria.id}} - {{categoria.categoria}}
 				</md-grid-tile>
 				<md-grid-tile colspan="1" rowspan="1" class="fondo" >
+					<button md-button (click)="formulario(categoria)">Actualizar</button>
 					<button md-button (click)="eliminar(categoria.id)">Eliminar</button>
 				</md-grid-tile>
 
