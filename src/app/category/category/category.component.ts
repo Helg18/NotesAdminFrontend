@@ -9,14 +9,20 @@ import { DataService } from '../../data.service';
   providers:[DataService]
 })
 export class CategoryComponent implements OnInit {
-	public category;
+  public category;
+	public categoria;
 
   constructor(private dataservice: DataService) {
-  	this.category = '';
+    this.category = '';
+  	this.categoria = '';
   }
 
   ngOnInit() {
-  	this.dataservice.categoryList().subscribe(
+    this.listar();
+  }
+
+  listar(){
+    this.dataservice.categoryList().subscribe(
       (data)=> this.category = data
       );
   }
@@ -25,6 +31,17 @@ export class CategoryComponent implements OnInit {
     this.dataservice.categoryDelete(data).subscribe(
       (data) => alert(data.msg)
       );
+    this.listar();
+  }
+
+  guardar(data){
+    this.dataservice.categoriaGuardar(data).subscribe(
+        (data)=> {
+                     alert(data.msg)
+                  }
+        );
+    this.listar();
+    this.categoria='';
   }
 
 }

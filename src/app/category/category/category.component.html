@@ -1,6 +1,17 @@
 <div align="center" >
 		<br><br><br>
 		<h4>Lista de categorias</h4>
+
+		<div align="center" >
+			<h4>Guardar</h4>
+			<form class="example-form" (ngSubmit)="guardar(this)">
+				<md-input-container class="example-full-width">
+					<input type="text" mdInput placeholder="nombre de la nueva categoria" required name="categoria" [(ngModel)]='categoria'>
+				</md-input-container>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button md-raised-button>Guardar!</button>
+			</form>
+		</div><br><br>
+
 		
 		<md-grid-list cols="4" rowHeight="50px">
 
