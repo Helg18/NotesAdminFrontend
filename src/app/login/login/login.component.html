@@ -1,11 +1,12 @@
 <div align="center" >
-		<br><br><br><form class="example-form" >
+		<br><br><br>
+		<form class="example-form" (ngSubmit)="login(this)">
 		  <md-input-container class="example-full-width">
-		    <input type="email" mdInput placeholder="email" required>
+		    <input type="email" mdInput placeholder="email" required name="email" [(ngModel)]='email'>
 		  </md-input-container>
 
 		  <md-input-container class="example-full-width">
-		    <input type="password" mdInput placeholder="password" required>
+		    <input type="password" mdInput placeholder="password" required name="pass" [(ngModel)]='pass'>
 		  </md-input-container><br>
     	  <button md-raised-button>Entrar.!</button>
 		</form>		<br><br><br>
