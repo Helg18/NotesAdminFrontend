@@ -1,3 +1,18 @@
-<p>
-  register works!
-</p>
+<div align="center" >
+		<br><br><br>
+		<h4>Registro de usuario</h4>
+		<form class="example-form" (ngSubmit)="registro(this)">
+		  <md-input-container class="example-full-width">
+		    <input type="text" mdInput placeholder="name" required name="name" [(ngModel)]='name'>
+		  </md-input-container>
+
+		  <md-input-container class="example-full-width">
+		    <input type="email" mdInput placeholder="email" required name="email" [(ngModel)]='email'>
+		  </md-input-container>
+
+		  <md-input-container class="example-full-width">
+		    <input type="password" mdInput placeholder="password" required name="pass" [(ngModel)]='password'>
+		  </md-input-container><br>
+    	  <button md-raised-button>Entrar.!</button>
+		</form>		<br><br><br>
+</div>

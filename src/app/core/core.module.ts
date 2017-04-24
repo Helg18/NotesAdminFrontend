@@ -4,6 +4,7 @@ import { ShellComponent } from './shell/shell.component';
 import { TopBarComponent } from './shell/top-bar/top-bar.component';
 import { MainContentComponent } from './shell/main-content/main-content.component';
 import { Routes, RouterModule } from '@angular/router';
+import 'rxjs/Rx';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule, MdButtonModule, MdCheckboxModule, MdToolbarModule } from '@angular/material';
