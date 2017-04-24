@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class DataService {
 	public Login;
+  public miToken;
 
   constructor( private http: Http) {
   	this.Login = 'http://localhost:8000/api/login';
@@ -17,7 +18,9 @@ export class DataService {
 
     return this.http.post(this.Login, params, {headers: headers})
       .map(response => response.json()).subscribe(
-      	(data)=> console.log(data.token)
+      	(data)=> {
+                    this.miToken = data.token
+                  }
       	);
   }
 
