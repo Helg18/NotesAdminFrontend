@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule, MdButtonModule, MdCheckboxModule, MdToolbarModule, MdInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MdGridListModule, MdSelectModule } from '@angular/material';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
     MdToolbarModule,
     FormsModule,
     MdGridListModule,
-    MdSelectModule
+    MdSelectModule,
+    Ng2OrderModule
   ],
   declarations: [NoteComponent]
 })

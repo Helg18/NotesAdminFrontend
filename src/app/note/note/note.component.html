@@ -1,7 +1,8 @@
 <div align="center">
 		<br><br><br>
-		<h4>Lista de notas</h4>
+		<h4>Lista de notas</h4> 
 		<br><br>
+			<button md-raised-button (click)="orderNotes()">Ordenar por nombre {{ orderedBy }}</button><br><br>
 	    	  <button md-raised-button (click)="mostrarformcrear()">Crear nueva nota</button>
 		<br><br>
 		<!-- Crear -->
@@ -60,7 +61,7 @@
 		<!-- Fin actualizar -->
 		
 		<div class="contenedor">
-			<div class="box-nota" *ngFor="let note of notas | orderby">
+			<div class="box-nota" *ngFor="let note of notas | orderBy: 'title':orderbyName ">
 			  <div class="title"> {{ note.title }} </div>
 			  <div class="subtitulo left">Categoria: {{ note.category_name }}</div>
 			  <div class="subtitulo right">Estatus: 

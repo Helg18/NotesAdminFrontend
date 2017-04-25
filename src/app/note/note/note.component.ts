@@ -22,6 +22,8 @@ export class NoteComponent implements OnInit {
   public actualizandoTitle;
   public actualizandoStatus;
   public checkedono;
+  public orderbyName;
+  public orderedBy;
 
   constructor(private dataservice: DataService) {
     this.title="";
@@ -29,6 +31,9 @@ export class NoteComponent implements OnInit {
     this.mostrar_crear = false;
     this.mostrar_actualizar = false;
     this.checkedono =  [ {value: '0', viewValue: 'Pendiente'}, {value: '1', viewValue: 'Completo'} ];
+    this.orderbyName = false;
+    this.orderedBy = 'A-Z';
+
   }
 
   ngOnInit() {
@@ -87,6 +92,11 @@ export class NoteComponent implements OnInit {
       (data) => alert(data.msg)
       );
     this.listar();
+  }
+
+  orderNotes(){
+    if (this.orderbyName) { this.orderbyName = false; this.orderedBy = "Z-A";}
+    else { this.orderbyName = true; this.orderedBy = "A-Z"; }
   }
 
 }
